@@ -94,10 +94,18 @@ recognition.onstart = function() {
                 recognition.stop();
             });
         } else if (callAssistent === "alex" && result.includes("dólar")) {
-            
+            $.ajax({
+                url: '',
+                type: 'get',
+                contentType: 'application/json',
+                sucess: function(crawler){
+                    $()
+                }                
+            })
+            }
         }
     }
-}
+
 
 // ON SPEECH RECOGNITION END
 recognition.onend = function() {
