@@ -69,38 +69,30 @@ recognition.onstart = function() {
             assistent.innerHTML = "Diga doutor, diga! 💬💬💬";
             audio.src = "audio/diga.ogg";
             audio.play();
-            sleep(5500).then(() => {
-                recognition.stop();
-            });
         } else if (callAssistent === "alex" && result.includes("horas")) {
             assistent.innerHTML = "Hora de fazer um arduino sem módulo 😬😬😬";
             audio.src = "audio/horas.ogg";
             audio.play();
-            sleep(5500).then(() => {
-                recognition.stop();
-            });
         } else if (callAssistent === "alex" && result.includes("dia")) {
             assistent.innerHTML = "Bom dia doutor! 😎😎😎";
             audio.src = "audio/bom dia.ogg";
             audio.play();
-            sleep(5500).then(() => {
-                recognition.stop();
-            });
         } else if (callAssistent === "alex" && result.includes("tarde")) {
             assistent.innerHTML = "Boa tarde mestre! 🔥🔥🔥";
             audio.src = "audio/boa tarde.ogg";
+            console.log("Tarde")
             audio.play();
-            sleep(5500).then(() => {
-                recognition.stop();
-            });
         } else if (callAssistent === "alex" && result.includes("dólar")) {
+            console.log("Dolar")
             $.ajax({
                 url: '',
-                type: 'get',
-                contentType: 'application/json',
-                sucess: function(crawler){
-                    $()
-                }                
+                method: 'get',
+                data: {keyword: 'dolar'},
+                processData: false,
+                contentType: aplication/json,
+                sucess: function(resposta){
+                    console.log(resposta)
+                }
             })
             }
         }
