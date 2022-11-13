@@ -13,10 +13,10 @@ def execDolar():
     print(crawDol.findDolar())
     return jsonify({'valueDolar': crawDol.sayText})
 
-@app.route('/ajax', methods=['GET'])
-def execDolar():
-    print(crawDol.findDolar())
-    return jsonify({'valueDolar': crawDol.sayText})
+@app.route('/ajaxWeather', methods=['GET'])
+def execWeather():
+    print(crawTemp.findTemp())
+    return jsonify({'valueTemp': crawTemp.sayText})
 
 if __name__ == "__main__":
     app.run(debug=True)

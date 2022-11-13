@@ -120,8 +120,8 @@ recognition.onstart = function() {
                     },
                     contentType: 'application/json',
                     success: function(resposta){
-                        console.log(resposta.valueDolar)
-                        say(resposta.valueDolar)
+                        console.log(resposta.valueTemp)
+                        say(resposta.valueTemp)
                     }
                 })
                 }
