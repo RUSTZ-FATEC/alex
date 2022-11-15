@@ -51,38 +51,38 @@ recognition.onstart = function() {
         // SETTING THE RECOGNITION RESULT TO THE OUTPUT
         output.innerHTML = result;
 
-        let callAssistent = []
+        // let callAssistent = []
         let audio = document.createElement('audio');
 
-        for (let i = 0; i < "alex".length; i++) {
-            callAssistent.push(result[i]);
-            console.log(callAssistent);
-        }
+        // for (let i = 0; i < "alex".length; i++) {
+        //     callAssistent.push(result[i]);
+        //     console.log(callAssistent);
+        // }
 
         // STRING TRATAMENT
-        callAssistent = callAssistent.join("");
-        result = result.replace(callAssistent, "");
+        // callAssistent = callAssistent.join("");
+        // result = result.replace(callAssistent, "");
         
 
         // COMMANDS LIST
-        if (callAssistent === "alex" && result === "") {
+        if (result.includes("alex") && result === "") {
             assistent.innerHTML = "Diga doutor, diga! 💬💬💬";
             audio.src = "static/audio/diga.ogg";
             audio.play();
-        } else if (callAssistent === "alex" && result.includes("horas")) {
+        } else if (result.includes("alex") && result.includes("horas")) {
             assistent.innerHTML = "Hora de fazer um arduino sem módulo 😬😬😬";
             audio.src = "static/audio/horas.ogg";
             audio.play();
-        } else if (callAssistent === "alex" && result.includes("dia")) {
+        } else if (result.includes("alex") && result.includes("dia")) {
             assistent.innerHTML = "Bom dia doutor! 😎😎😎";
             audio.src = "static/audio/bom dia.ogg";
             audio.play();
-        } else if (callAssistent === "alex" && result.includes("tarde")) {
+        } else if (result.includes("alex") && result.includes("tarde")) {
             assistent.innerHTML = "Boa tarde mestre! 🔥🔥🔥";
             audio.src = "static/audio/boa tarde.ogg";
             console.log("Tarde")
             audio.play();
-        } else if (callAssistent === "alex" && result.includes("dólar")) {
+        } else if (result.includes("alex") && result.includes("dólar")) {
             console.log("Dolar")
             $.ajax({
                 url: '/ajaxDolar',
@@ -93,24 +93,11 @@ recognition.onstart = function() {
                 contentType: 'application/json',
                 success: function(resposta){
                     console.log(resposta.valueDolar)
+                    assistent.innerHTML = resposta.valueDolar+" 💵"
                     say(resposta.valueDolar)
                 }
             })
-            }else if (callAssistent === "alex" && result.includes("dólar")) {
-            console.log("Dolar")
-            $.ajax({
-                url: '/ajaxDolar',
-                method: 'GET',
-                data: {
-                    keyword: 'dolar'
-                },
-                contentType: 'application/json',
-                success: function(resposta){
-                    console.log(resposta.valueDolar)
-                    say(resposta.valueDolar)
-                }
-            })
-            }else if (callAssistent === "alex" && result.includes("temperatura")) {
+            }else if (result.includes("alex") && result.includes("temperatura")) {
                 console.log("Temperatura")
                 $.ajax({
                     url: '/ajaxWeather',
@@ -121,10 +108,25 @@ recognition.onstart = function() {
                     contentType: 'application/json',
                     success: function(resposta){
                         console.log(resposta.valueTemp)
+                        assistent.innerHTML = resposta.valueTemp+" 🌡️"
                         say(resposta.valueTemp)
                     }
                 })
-                }
+            }else if (result.includes("alex") && result.includes("pesquisa")) {
+                $.ajax({
+                    url: '/ajaxSearch',
+                    method: 'GET',
+                    data: {
+                        pesquisa: result
+                    },
+                    contentType: 'application/json',
+                    success: function(resposta){
+                        assistent.innerHTML = resposta.valueText
+                        say(resposta.valueText)
+                        window.open(resposta.valueLink, '_blank')
+                    }
+                })
+            }
         }
     }
 
