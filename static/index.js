@@ -1,12 +1,10 @@
 // INSTANCIATING THE SPEECH RECOGNITION
-
 const recognition = new webkitSpeechRecognition();
 recognition.lang = "pt-BR";
 recognition.continuous = true;
 recognition.interimResults = false;
 
 // CREATING SPEECH SYNTHESIS FUNCTION
-
 function say(text) {
     const utterance = new SpeechSynthesisUtterance();
     utterance.text = text;
@@ -18,13 +16,11 @@ function say(text) {
 }
 
 // CREATING SLEEP FUNCTION
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // DOM ELEMENTS
-
 const startBtn = document.querySelector('#start');
 const output = document.querySelector('#output');
 const assistent = document.querySelector('#assistent');
@@ -35,9 +31,7 @@ function start() {
     assistent.innerHTML = "Estou te ouvindo...";
     say("Estou te ouvindo...");
     // STARTING THE RECOGNITION
-    sleep(1200).then(() => {
-        recognition.start();
-    });
+    recognition.start();
 }
 
 // ON SPEECH RECOGNITION START
@@ -51,19 +45,8 @@ recognition.onstart = function() {
         // SETTING THE RECOGNITION RESULT TO THE OUTPUT
         output.innerHTML = result;
 
-        // let callAssistent = []
         let audio = document.createElement('audio');
-
-        // for (let i = 0; i < "alex".length; i++) {
-        //     callAssistent.push(result[i]);
-        //     console.log(callAssistent);
-        // }
-
-        // STRING TRATAMENT
-        // callAssistent = callAssistent.join("");
-        // result = result.replace(callAssistent, "");
         
-
         // COMMANDS LIST
         if (result.includes("alex") && result === "") {
             assistent.innerHTML = "Diga doutor, diga! 💬💬💬";
@@ -132,10 +115,10 @@ recognition.onstart = function() {
 
 
 // ON SPEECH RECOGNITION END
-recognition.onend = function() {
-    assistent.innerHTML = "Não estou mais te ouvindo...";
-    say("Não estou mais te ouvindo...");
-}
+// recognition.onend = function() {
+//     assistent.innerHTML = "Não estou mais te ouvindo...";
+//     say("Não estou mais te ouvindo...");
+// }
 
 // ON SPEECH RECOGNITION ERROR
 recognition.onerror = function(event) {
