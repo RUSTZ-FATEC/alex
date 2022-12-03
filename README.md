@@ -7,6 +7,8 @@
 Alex is a virtual assistent that can do somethings for you like:
 
 * Search something Google
+* Ask dolar price
+* Ask today temperature
 
 Soon we will add more features to Alex, so stay tuned! 📻
 
@@ -19,7 +21,7 @@ Soon update:
 
 Alex is very easy to use, For example:
 
-``"Alex, search by Google for (search term)".``
+``"Alex, search (search term)".``
 
 
 **Observation:** ⚠️
@@ -57,7 +59,7 @@ Who made what?
 
 * Jeff Vargas - Javascript and Server structure.
 
-* Victor Kashima - Python, Scrapy, Trello.
+* Victor Kashima - Python Crawler, API Ajax Js, Trello.
 
 * Giovanni Giuseppe - HTML, CSS
 
